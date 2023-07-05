@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Página com Logo</title>
+  <style>
+    body {
+      background-color: #00A86B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .logo {
+      width: 300px;
+      opacity: 0;
+      animation: fade-in 2s forwards;
+    }
+    
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <img src="./img/MercadoNow___6_-removebg-preview.png" alt="Logo" class="logo">
+  </div>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = "login.html";
+    }, 4000);
+  </script>
+</body>
+</html>

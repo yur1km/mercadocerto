@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Página de Login</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    body {
+      background-color: #FFFFFF;
+      font-family: 'Roboto', sans-serif;
+      overflow-y: hidden;
+    }
+    
+    .logo {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    
+    .logo img {
+      width: 200px;
+      margin-right: 10px;
+    }
+    
+    .login-text {
+      text-align: center;
+      color: #000000;
+      margin-top: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+      font-family: Roboto, sans-serif;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 30px auto;
+    }
+    
+    .input-field {
+      width: 250px;
+      padding: 10px;
+      border: 1px solid #8F8F8F;
+      border-radius: 7px;
+      margin: 5px 0;
+      color: #008358;
+    }
+    
+    .input-field::placeholder {
+      color: #008358;
+    }
+    
+    .error-message {
+      color: #00A86B;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    
+    .button {
+      width: 250px;
+      padding: 10px;
+      background-color: #00A86B;
+      color: #FFFFFF;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+      display: block;
+      margin: 5px auto;
+      transition: background-color 0.3s ease;
+    }
+    
+    .button:hover {
+      background-color: #008358;
+    }
+    
+    .create-account-text {
+      text-align: center;
+      color: #00A86B;
+      margin-top: 270px;
+      margin-bottom: 30px;
+    }
+    
+    .create-account-link {
+      color: #00A86B;
+      text-decoration: underline;
+    }
+    
+    .loading-container {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 168, 107, 0.0);
+      z-index: 999;
+    }
+    
+    .loading-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 100px;
+      border: 3px solid #FFFFFF;
+      border-top: 3px solid #008358;
+      border-radius: 50%;
+      animation: spin 2s linear infinite;
+    }
+    
+    .loading-logo {
+      width: 120px;
+      height: 120px;
+      position: absolute;
+      top: calc(50% - 60px);
+      left: calc(50% - 60px);
+    }
+    
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <img src="./img/Logo.png" alt="Logo">
+  </div>
+  
+  <div class="login-text">
+    <h3>Entre em sua conta</h3>
+  </div>
+  
+  <div class="container">
+    <input type="email" id="email" class="input-field" placeholder="Email">
+    <span id="emailError" class="error-message"></span>
+    <input type="password" id="password" class="input-field" placeholder="Senha">
+    <span id="passwordError" class="error-message"></span>
+  </div>
+  
+  <button class="button" onclick="validateForm()">Entrar</button>
+  
+  <div class="create-account-text">
+    Poxa! Não tem uma conta? <a href="#" class="create-account-link" onclick="showLoading()">Crie agora</a>.
+  </div>
+  
+  <div class="loading-container" id="loadingContainer">
+    <div class="loading-circle"></div>
+    <img src="./img/MercadoNow___7_-removebg-preview.png" alt="Logo" class="loading-logo">
+  </div>
+
+  <script>
+    function validateForm() {
+      var emailField = document.getElementById('email');
+      var passwordField = document.getElementById('password');
+      var emailError = document.getElementById('emailError');
+      var passwordError = document.getElementById('passwordError');
+      var valid = true;
+
+      if (emailField.value.trim() === '') {
+        emailError.textContent = '* Este campo é obrigatório';
+        valid = false;
+      } else {
+        emailError.textContent = '';
+      }
+
+      if (passwordField.value.trim() === '') {
+        passwordError.textContent = '* Este campo é obrigatório';
+        valid = false;
+      } else {
+        passwordError.textContent = '';
+      }
+
+      if (valid) {
+        showLoading();
+      }
+    }
+
+    function showLoading() {
+      var button = document.querySelector('.button');
+      button.style.display = 'none';
+      
+      var container = document.querySelector('.container');
+      container.style.display = 'none';
+      
+      var loginText = document.querySelector('.login-text');
+      loginText.style.display = 'none';
+      
+      var createAccountText = document.querySelector('.create-account-text');
+      createAccountText.style.display = 'none';
+      
+      var loadingContainer = document.querySelector('.loading-container');
+      loadingContainer.style.display = 'flex';
+      
+      var logo = document.querySelector('.logo');
+      logo.style.display = 'none';
+      
+      setTimeout(function() {
+        window.location.href = 'criaracc1.html';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
